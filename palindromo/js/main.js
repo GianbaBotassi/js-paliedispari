@@ -2,30 +2,36 @@
 const inputWord = prompt("inserisci una parola");
 document.getElementById("input_word").innerHTML = inputWord;
 
-// Splitta in un array tutte le lettere della parola inserita
-const letterArray = inputWord.split('');
+// Creo funzione per verificare se palindromo
+function checkPal(word){
+    // Splitta in un array tutte le lettere della parola inserita
+    const letterArray = word.split('');
 
-// Dichiara variabile per parola la contrario
-let reverseWord = '';
+    // Dichiara variabile per parola al contrario
+    let reverseWord = '';
 
-// Cicla lettere array al contrario
-for(let i = letterArray.length - 1; i >= 0; i--){
-    reverseWord += letterArray[i];
+    // Cicla lettere array al contrario
+    for(let i = letterArray.length - 1; i >= 0; i--){
+        reverseWord += letterArray[i];
+    }
+
+    // Dichiara variabile esito
+    let outcome;
+
+    // Verifica con condizione se la parola inserita è un palindromo (uguale al contraio)
+    if(word === reverseWord){
+        outcome = "Vero";
+    }else(outcome = "Falso");
+
+    // Immetti nel DOM la parola invertita
+    document.getElementById("reverse_word").innerHTML = reverseWord;
+
+    // Immetti nel DOM l'esito
+    document.getElementById("outcome").innerHTML = outcome;
 }
 
-// Immetti nel DOM la parola invertita
-document.getElementById("reverse_word").innerHTML = reverseWord;
+// Verifica funzione in base alla parola inserita nel prompt
+checkPal(inputWord);
 
-
-// Verifica con condizione se la parola inserita è un palindromo (uguale al contraio)
-let outcome;
-
-if(inputWord === reverseWord){
-    outcome = "Vero";
-}else(outcome = "Falso");
-
-
-// Immetti nel DOM l'esito
-document.getElementById("outcome").innerHTML = outcome;
 
 
