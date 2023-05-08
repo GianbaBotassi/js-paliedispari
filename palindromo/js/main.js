@@ -16,11 +16,11 @@ function checkPal(word){
     }
 
     // Dichiara variabile esito
-    let outcome = "Falso"
+    let outcome = false;
 
     // Verifica con condizione se la parola inserita è un palindromo (uguale alla parola scritta al contrario)
     if(word === reverseWord){
-        outcome = "Vero";
+        outcome = true;
     }
 
     // Immetti nel DOM la parola invertita
