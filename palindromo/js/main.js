@@ -22,16 +22,11 @@ function checkPal(word){
     if(word === reverseWord){
         outcome = true;
     }
-
-    // Immetti nel DOM la parola invertita
-    document.getElementById("reverse_word").innerHTML = reverseWord;
-
-    // Immetti nel DOM l'esito
-    document.getElementById("outcome").innerHTML = outcome;
+    return outcome;
 }
 
-// Verifica funzione in base alla parola inserita nel prompt
-checkPal(inputWord);
+// Verifica funzione in base alla parola inserita nel prompt e immetto nel DOM esito
+    document.getElementById("outcome").innerHTML = checkPal(inputWord);
 
 
 
