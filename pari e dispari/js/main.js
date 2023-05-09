@@ -1,52 +1,44 @@
 // Chiedi a utente se pari o dispari
-const sceltaGioco = prompt("Scegli pari o dispari (in minuscolo)");
+const sceltaGioco = prompt("Scegli pari o dispari").toLowerCase();
 document.getElementById("scelta_gioco").innerHTML = sceltaGioco;
 
 // Chiedi a utente un numero da 1 a 5
 const inputNumero = parseInt(prompt("Inserisci un numero da 1 a 5"));
 document.getElementById("numUser").innerHTML = inputNumero;
 
-// Eseguo funzione con prompt
-pariDispari(sceltaGioco, inputNumero);
+// Genera numero random per computer
+const randomNumber = mathRandomMinMax(1, 5);
+document.getElementById("numBot").innerHTML = randomNumber;
 
-// FUNZIONI
+// Eseguo funzione ed inserisco nel DOM il messaggio di chi vince
+document.getElementById("messaggio").innerHTML = pariDispari(sceltaGioco, inputNumero, randomNumber);
 
-// Creo funzione pari e dispari
-function pariDispari(scelta, numero){
-    // Genero numero random per computer
-    const randomNumber = Math.floor(Math.random() * 5) + 1;
-    document.getElementById("numBot").innerHTML = randomNumber;
+// FUNCTIONS
 
-    // Calcolo somma numeri scelti
-    const somma = numero + randomNumber; 
-
-    // Dichiaro variabili esito e variabile messaggio
-    let esito, messaggio;
-
-    if(somma % 2){
-        esito = "dispari";
-        if(scelta === "dispari"){
-            messaggio = "Hai vinto";
-        }else{
-            messaggio = "Hai perso";
-        }
-    }else{
-        esito = "pari";
-        if(scelta === "pari"){
-            messaggio = "Hai vinto";
-        }else{
-            messaggio ="Hai perso";
-        }
-    }
-
-    // Inserisco nel DOM l'esito
-    document.getElementById("result").innerHTML = esito;
-
-    // Inserisco nel DOM il messaggio di chi vince
-    document.getElementById("messaggio").innerHTML = messaggio;
+// Math random function from min to max
+function mathRandomMinMax(min, max){
+    return Math.floor(Math.random() * (max - min)) + min;
 }
 
+// IsEven function
+function isOdd(number){
+    let outcome = false;
+    if(number % 2 === 1){
+        outcome = true; 
+    }
+    return outcome;
+}
 
+// Function even Odd
+function pariDispari(scelta, yourNumber, randomNumber){
 
+    // Sommo i numeri e ottengo la somma (const number)
+    const number = yourNumber + randomNumber;
+
+if(isOdd(number) === true && scelta === "dispari" || isOdd(number) === false && scelta === "pari"){
+    messaggio = "Hai vinto"
+}
+return messaggio;
+}
 
 
